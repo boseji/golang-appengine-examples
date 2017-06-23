@@ -1,0 +1,10 @@
+dispatch:  
+  # Default service serves simple hostname request.
+  - url: "simple-sample.appspot.com/"
+    service: default
+
+  # Send all Service[UUID] traffic to the specific endpoint.
+  - url: "*/uuid/*"
+    service: uuid
+
+  
