@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"strings"
 )
 
 func init() {
@@ -14,7 +13,7 @@ func init() {
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "text/html")
 	fmt.Fprint(w, "<h2>Main Route in Golang App</h2><br>")
-	if strings.Contains(r.Host, "http") {
+	if r.TLS == nil {
 		fmt.Fprintf(w, "<a href=\"http://uuid.%v\">Link to Service</a>", r.Host)
 	} else {
 		fmt.Fprintf(w, "<a href=\"https://uuid-dot-%v\">Link to Service</a>", r.Host)
