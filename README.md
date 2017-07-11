@@ -187,7 +187,7 @@ go get -v google.golang.org/appengine/./...
   - [ ] Template based example with static hosting (02)
   - [ ] Shortcut link generator using Database (03)
   - [ ] User Login using OAuth (04)
-  - [x] Microservices starting example (05)
+  - [x] ~~Microservices starting example (05)~~
   - [ ] Key Value store and JWT authentication service linked to OAuth (06)
 
 *More to be added on your requests*
