@@ -1,0 +1,29 @@
+html, body, div, h1, h2, h3 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 1vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#atf {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#atf h1 {
+    font-size: 3rem;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+#atf div {
+    padding-bottom: 1rem;
+}

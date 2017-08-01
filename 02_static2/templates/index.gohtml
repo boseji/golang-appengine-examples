@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body ng-controller="mainCtrl">
+    <div id="atf">
+        <h1>Hello There! <br> Golang Webapp is working</h1>
+        <h2>Now with Angular!</h2>
+        <ul>
+            <li ng-repeat="m in messages track by $index">{{"{{"}}m{{"}}"}}</li>
+        </ul>
+        <div>
+            <input type="text" ng-model="input">
+            <button ng-click="send()">Send Message</button><br>
+        </div>
+        <div><button ng-click="clr()">Clear Messages</button></div>
+    </div>
+    <script src="assets/js/angular.min.js"></script>
+    <script>
+        var app = angular.module("index", []);
+        app.controller('mainCtrl', ['$scope', function ($scope) {
+            $scope.messages = [];
+            $scope.send = function () {
+                    if ($scope.input.toString().length < 2) return;
+                    $scope.messages.push($scope.input);
+                    $scope.input = '';
+            };
+            $scope.clr = function () {
+                $scope.messages = []; // Clear All
+            }
+        }]);
+    </script>
+</body>
+
+</html>
