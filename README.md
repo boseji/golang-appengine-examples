@@ -184,7 +184,7 @@ go get -v google.golang.org/appengine/./...
 
 ## TODO
 
-  - [ ] Template based example with static hosting (02)
+  - [X] ~~Template based example with static hosting (02)~~
   - [ ] Shortcut link generator using Database (03)
   - [ ] User Login using OAuth (04)
   - [x] ~~Microservices starting example (05)~~

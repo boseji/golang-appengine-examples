@@ -48,7 +48,7 @@ This example uses the **Standard AppEngine Golang** instance in the `app.yaml`
 
 The important change in the file is in the *lines 5-7* here is a snippet
 
-```toml
+```yaml
 runtime: go
 api_version: go1
 
