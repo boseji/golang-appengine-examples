@@ -3,6 +3,17 @@
 This is basic example demonstrating a simple webserver
 hosted on port `8080` localhost.
 
+#### Upgraded for Go 1.12 Compatibility
+
+Use the following Commands for Module :
+
+```shell
+go mod init github.com/boseji/golang-appengine-examples/00_basic
+go mod tidy
+```
+
+This was needed to be done only once to create the specific module dependency file.
+
 ### TLDR;
 
 To run this code go to this directory
