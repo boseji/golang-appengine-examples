@@ -5,22 +5,58 @@ This is First App Engine example which is a derivative of the previous
 
 The example consist of 2 files:
 
- * app.yaml - Configuration file needed for the App Engine to deploy
+ * `app.yaml` - Configuration file needed for the App Engine to deploy
 
- * main.go - Application main file. Though naming it `main` might not
+ * `main.go` - Application main file. Though naming it `main` might not
  be needed, it is essential that this file defines `package main` and
  contains the `func init()` as the entry point.
 
-## TLDR;
+## Upgrade to Go 1.12
 
-In order to run the Google AppEngine Dev environment use the following
-command in the program directory:
+### Module Initialization:
+
 ```shell
-dev_appserver.py app.yaml
-````
+go mod init github.com/boseji/golang-appengine-examples/01_hello
+go mod tidy
+```
 
-*Yes, this is a python file* mapped to help you host the AppEngine
-Development server instance.
+### [`app.yaml`](app.yaml) Modifications:
+
+```yaml
+runtime: go112
+```
+
+The `api_version` has been deprecated all controls are from `runtime`.
+
+No need for the `handlers` section as It's a Single Entry App:
+```yaml
+handlers:
+- url: /.*
+  script: auto
+```
+
+### Program Modifications
+
+1. We need to explicitly register the HTTP Handlers.
+This is now true for both *Flexible* and *Standard Environments* for **Go 1.12**. This helps to keep the program simple and easy to test out.
+
+2. We also need to Get the specific `PORT` as an *Environment variable*.
+
+### Ignore File
+
+Yes we now need to add an explicit ignore file called **`.gcloudignore`**
+
+For all the things we don't want to get included into the *Cloud Deployment*.
+
+# TLDR;
+
+To test just run like a *normal Go program*
+
+```
+go rum main.go
+```
+
+Yes this is new with **Go 1.12 Appengine Upgrade**.
 
 The Server is accessible at `http://localhost:8080`
 
@@ -28,8 +64,7 @@ If you visit this in the browser it should display
 
 `Working Golang App`
 
-Next, you can also access the **Google AppEngine
-Development Server** at `http://localhost:8000`
+> *So Many Changes with **Go 1.12** - Makes things Easy but also quite different*
 
 ## Configuration Command
 
@@ -54,32 +89,40 @@ This would deploy the app and set the **Version** to `1`
 Adding a version helps to keep track of progress and later
 use specific instances of the Apps
 
-## Description
+# Description
 
-It would be interesting to note that there is no `main()` function in the
-go file.
+The Go program can now use any Framework and Library as needed.
+This would enable to use the `go mod` with vendor support.
+Another new things with **Go 1.12 Appengine Upgrade**.
 
-This is because the **Standard AppEngine Golang** instance
-uses your code like a package.
+Rest of the code is as explained in the [earlier example](../00_basic/readme.md).
 
-There is a separate process running your code with the web server.
+## Appengine Edition in Go 1.12 Upgrade
 
 The distinction between **flexible** and **standard** is made by the
 `app.yaml` file section:
 
 ```yaml
-runtime: go
-api_version: go1
+runtime: go112
 ```
 
-Additional in the `app.yaml` there is a handler section which tells
-the **Standard AppEngine Golang** Runtime to redirect
-all request to the `golang app`
+This is normal for **Standard Environment** without any *Scaling*.
+
+Additional in the `app.yaml` there is a `env` section and `scaling` which tells the **Flexible AppEngine Golang** Runtime to run the app in specific 
 
 ```yaml
-handlers:
-- url: /.*
-  script: _go_app
+env: flex
+
+# This sample incurs costs to run on the App Engine flexible environment. 
+# The settings below are to reduce costs during testing and are not appropriate
+# for production use. For more information, see:
+# https://cloud.google.com/appengine/docs/flexible/python/configuring-your-app-with-app-yaml
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
 ```
 
-Rest of the code is as explained in the earlier example.
+
