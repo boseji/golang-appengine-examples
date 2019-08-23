@@ -53,6 +53,9 @@ Inside the `init()` We are adding web two end points :
   some times the browsers request it. So we associate the default
   `NotFoundHandler()` to generate a `404` Not found response.
 
+With **Go 1.12 Appengine Upgrade** this special **`init()`** will 
+**no longer be needed** and hence omitted in the next examples.
+
 #### indexHandler()
 
 Next, we have the root handler
