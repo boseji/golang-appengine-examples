@@ -1,7 +1,7 @@
 # Appengine Angular Example
 
-This example is similar to the `02_static` but it also adds angular for client side 
-processing.
+This example is similar to the `02_static` but it also adds angular for 
+client side processing.
 
 Javascript library for **Angular** is served from the `assets` directory.
 
