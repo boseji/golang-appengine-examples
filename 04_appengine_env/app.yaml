@@ -1,0 +1,4 @@
+runtime: go112
+
+env_variables:
+  MY_VAR: "My Custom Environment Variable"
