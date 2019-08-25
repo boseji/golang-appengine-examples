@@ -15,7 +15,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh;    
 }
 
 #atf h1 {
@@ -26,4 +26,9 @@ html {
 
 #atf div {
     padding-bottom: 1rem;
+}
+
+#atf li {
+    font-size: 2rem;
+    color: red;
 }
