@@ -16,3 +16,6 @@
 # IntelliJ Ide
 .idea
 *.iml
+
+# Ignore the VSCode IDE created files
+.vscode/
