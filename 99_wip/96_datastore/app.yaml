@@ -1,0 +1,21 @@
+runtime: go
+api_version: go1
+
+handlers:
+- url: /.*
+  script: _go_app
+
+skip_files:
+- ^(.*~)$
+- ^(.gitignore)$
+- ^(.git)$
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\.bak$
+- ^(.*/)?\.cmd$
+- ^(.*/)?\.sh$
+- ^(.*/)?\.md$
+# All the . Directories
+- ^(.*/)?\..*$

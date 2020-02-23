@@ -19,3 +19,6 @@
 
 # Ignore the VSCode IDE created files
 .vscode/
+
+# Remove Secrets
+*.json
