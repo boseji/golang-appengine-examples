@@ -5,22 +5,22 @@ This is First App Engine example which is a derivative of the previous
 
 The example consist of 2 files:
 
- * `app.yaml` - Configuration file needed for the App Engine to deploy
+* `app.yaml` - Configuration file needed for the App Engine to deploy
 
- * `main.go` - Application main file. Though naming it `main` might not
+* `main.go` - Application main file. Though naming it `main` might not
  be needed, it is essential that this file defines `package main` and
  contains the `func init()` as the entry point.
 
 ## Upgrade to Go 1.12
 
-### Module Initialization:
+### Module Initialization
 
 ```shell
 go mod init github.com/boseji/golang-appengine-examples/01_hello
 go mod tidy
 ```
 
-### [`app.yaml`](app.yaml) Modifications:
+### [`app.yaml`](app.yaml) Modifications
 
 ```yaml
 runtime: go112
@@ -29,6 +29,7 @@ runtime: go112
 The `api_version` has been deprecated all controls are from `runtime`.
 
 No need for the `handlers` section as It's a Single Entry App:
+
 ```yaml
 handlers:
 - url: /.*
@@ -38,7 +39,8 @@ handlers:
 ### Program Modifications
 
 1. We need to explicitly register the HTTP Handlers.
-This is now true for both *Flexible* and *Standard Environments* for **Go 1.12**. This helps to keep the program simple and easy to test out.
+This is now true for both *Flexible* and *Standard Environments* for **Go 1.12**.
+This helps to keep the program simple and easy to test out.
 
 2. We also need to Get the specific `PORT` as an *Environment variable*.
 
@@ -48,11 +50,11 @@ Yes we now need to add an explicit ignore file called **`.gcloudignore`**
 
 For all the things we don't want to get included into the *Cloud Deployment*.
 
-# TLDR;
+## tl;dr
 
 To test just run like a *normal Go program*
 
-```
+```shell
 go rum main.go
 ```
 
@@ -89,7 +91,7 @@ This would deploy the app and set the **Version** to `1`
 Adding a version helps to keep track of progress and later
 use specific instances of the Apps
 
-# Description
+## Description
 
 The Go program can now use any Framework and Library as needed.
 This would enable to use the `go mod` with vendor support.
@@ -108,12 +110,13 @@ runtime: go112
 
 This is normal for **Standard Environment** without any *Scaling*.
 
-Additional in the `app.yaml` there is a `env` section and `scaling` which tells the **Flexible AppEngine Golang** Runtime to run the app in specific 
+Additional in the `app.yaml` there is a `env` section and `scaling` which tells
+the **Flexible AppEngine Golang** Runtime to run the app in specific.
 
 ```yaml
 env: flex
 
-# This sample incurs costs to run on the App Engine flexible environment. 
+# This sample incurs costs to run on the App Engine flexible environment.
 # The settings below are to reduce costs during testing and are not appropriate
 # for production use. For more information, see:
 # https://cloud.google.com/appengine/docs/flexible/python/configuring-your-app-with-app-yaml
@@ -124,5 +127,3 @@ resources:
   memory_gb: 0.5
   disk_size_gb: 10
 ```
-
-

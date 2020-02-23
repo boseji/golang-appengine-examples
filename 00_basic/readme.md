@@ -3,7 +3,7 @@
 This is basic example demonstrating a simple webserver
 hosted on port `8080` localhost.
 
-#### Upgraded for Go 1.12 Compatibility
+## Upgraded for Go 1.12 Compatibility
 
 Use the following Commands for Module :
 
@@ -14,9 +14,10 @@ go mod tidy
 
 This was needed to be done only once to create the specific module dependency file.
 
-### TLDR;
+## tl;dr
 
 To run this code go to this directory
+
 ```shell
 go run main.go
 ```
@@ -28,15 +29,16 @@ It should show the text:
 
 `Working Golang App`
 
-### Detail
+## Detail
 
-#### init()
+### init()
+
 In this example we use the special `init()` function
 
 ```go
 func init() {
-	http.HandleFunc("/", indexHandler)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
+  http.HandleFunc("/", indexHandler)
+  http.Handle("/favicon.ico", http.NotFoundHandler())
 }
 ```
 
@@ -45,15 +47,15 @@ of `go` file or package.
 
 Inside the `init()` We are adding web two end points :
 
-  - First `/` is the root end point added to the `DefaultServeMux`
+- First `/` is the root end point added to the `DefaultServeMux`
   in the `net\http` package using the `HandleFunc` method.
 
-  - Second `/favicon.ico` which is generally the small icon shown on
+- Second `/favicon.ico` which is generally the small icon shown on
   corner of the browser tab. Though this is not explicitly processed
   some times the browsers request it. So we associate the default
   `NotFoundHandler()` to generate a `404` Not found response.
 
-With **Go 1.12 Appengine Upgrade** this special **`init()`** will 
+With **Go 1.12 Appengine Upgrade** this special **`init()`** will
 **no longer be needed** and hence omitted in the next examples.
 
 #### indexHandler()
@@ -93,4 +95,3 @@ that might occur while starting or during operation of the http server.
 Since the `ListenAndServe` is a blocking function, it continues to run
 infinitely serving the pages. Till we send the `SIGTERM` or `SIGKILL`
 to the process or simply press `Ctrl+C`
-

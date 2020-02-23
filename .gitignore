@@ -22,3 +22,6 @@
 
 # Remove Secrets
 *.json
+
+# Remove Vendor Directories
+vendor/

@@ -1,6 +1,6 @@
 # Appengine Angular Example
 
-This example is similar to the `02_static` but it also adds angular for 
+This example is similar to the `02_static` but it also adds angular for
 client side processing.
 
 Javascript library for **Angular** is served from the `assets` directory.
@@ -10,11 +10,11 @@ To support the **[Angular framework](https://angular.io/)**.
 
 Similar Modification for **Go 1.12 Upgrade** as like the earlier example.
 
-## TLDR;
+## tl;dr
 
 To test out the **Angular App** locally :
 
-```
+```shell
 go run main.go
 ```
 
@@ -22,8 +22,8 @@ The Server is accessible at `http://localhost:8080`
 
 If you visit this in the browser it should display
 
-```
-Hello There! 
+```shell
+Hello There!
 Golang Webapp is working
 ```
 
@@ -35,15 +35,16 @@ Of course you can deploy the application the same way as earlier.
 ```shell
 gcloud app deploy ./app.yaml --version 1
 ```
-# Description
 
-In this application example, we look at how we can use 
+## Description
+
+In this application example, we look at how we can use
 **[Angular JS](https://angular.io/)** along with
 **Go's `html` templates** on Appengine.
 
 ## About Template / Angular parsing
 
-In order to avoid confusion between template engine and Angular the 
+In order to avoid confusion between template engine and Angular the
 following helps to encapsulate the parameters:
 
 ```html
@@ -55,18 +56,19 @@ following helps to encapsulate the parameters:
 This way the processing is only done on the client side.
 Hence the angular and template engine can operate simultaneously.
 
-Well we have colored the messages with a different CSS specifier under 
+Well we have colored the messages with a different CSS specifier under
 the `above-the-fold` container.
 
 ## No more Auto static sharing / hosting
 
-We do not use the **automatic static sharing** like the 
+We do not use the **automatic static sharing** like the
 [earlier example](../02_static/README.md)
 
 Though this is optional we just wanted to show a new technique
 of static file sharing/hosting.
 
 Here is the modified [`app.yaml`](app.yaml) :
+
 ```yaml
 runtime: go112
 
@@ -84,10 +86,9 @@ This is new in the **Go 1.12 Appengine Upgrade**.
 The *Go program* does the *static file hosting* :
 
 ```go
-	http.Handle("/assets/",
-		http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
+  http.Handle("/assets/",
+  http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 ```
 
-Thanks to ***[Google Cloud](https://cloud.google.com)*** for 
+Thanks to ***[Google Cloud](https://cloud.google.com)*** for
 making coding apps in **Golang** easier.
-
