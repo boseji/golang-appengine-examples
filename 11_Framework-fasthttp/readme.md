@@ -8,7 +8,7 @@ Also [`fasthttp` claims to be the fastest][2] when it comes to
 raw performance. The secret is in using `bytes.Buffer` type.
 This allows nearly zero reallocation.
 
-## TLDR;
+## tl;dr
 
 To test just run like a *normal Go program*
 

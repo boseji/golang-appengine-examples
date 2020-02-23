@@ -37,7 +37,7 @@ We would be enhancing our know-how on :
   [previous `404` handling](../06_error_routing_static/). Since now
   we need to Handle other errors as well.
 
-## TLDR;
+## tl;dr
 
 To Execute the project use:
 

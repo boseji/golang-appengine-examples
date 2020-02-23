@@ -13,7 +13,7 @@ to be shown akin to the site's own style.
 We look into this first using a error based
 routing.
 
-## TLDR;
+## tl;dr
 
 Test the program by:
 
@@ -45,26 +45,25 @@ The same works well on Appengine as well :
 gcloud app deploy ./app.yaml --version 1
 ```
 
-# Description
+## Description
 
 All we are doing here is when ever the `indexHandler` detects
 any invalid URI's it serves the [`404` Page](404.html).
 
 ```go
     if r.RequestURI != "/" {
-		// Display the 404 file
-		content, _ := ioutil.ReadFile("404.html")
-		w.WriteHeader(http.StatusNotFound)
-		fmt.Fprintf(w, "%s", content)
-		return
-	}
+        // Display the 404 file
+        content, _ := ioutil.ReadFile("404.html")
+        w.WriteHeader(http.StatusNotFound)
+        fmt.Fprintf(w, "%s", content)
+        return
+    }
 ```
 
-One might ask why not use `http.ServeFile` well we need to 
+One might ask why not use `http.ServeFile` well we need to
 also set the **Header** status to `404`.
 Hence the `ioutil.ReadFile`.
 
 Plus our HTML file isn't that big so a direct memory load would
 not dent much of a performance. However repeated fetches might
 hinder the operation.
-

@@ -7,7 +7,7 @@ Now we would try to Host a website with static files,
 and a same single page in one. And use the same `404` page
 for both.
 
-## TLDR;
+## tl;dr
 
 To execute just give the command :
 
@@ -53,7 +53,7 @@ This would also work in Appengine:
 gcloud app deploy ./app.yaml --version 1
 ```
 
-# Description
+## Description
 
 What we did here is divided into 3 parts :
 
@@ -92,8 +92,8 @@ func return404(w http.ResponseWriter, _ *http.Request) {
 }
 ```
 
-We have used the<br>
-`w.Header().Set("Content-Type", "text/html")`<br>
+We have used the `w.Header().Set("Content-Type", "text/html")`
+
 to make sure that we have the correct content type set.
 
 Another **important** thing is this call (`w.Header().Set(`)
@@ -170,20 +170,20 @@ Well there are 4 members.
 Let us understand the process in which the *Headers* are assembled and
 *How block the `http.FileServer`* :
 
- 1. Page to be rendered is selected by the `http.FileSystem` Interface
+1. Page to be rendered is selected by the `http.FileSystem` Interface
  implemented in `http.Dir` which intern is a `string` type.
  This is part of the `http.FileServer` implementation.
 
- 2. Headers are assembled using `http.ResponseWriter.Header()` call.
+2. Headers are assembled using `http.ResponseWriter.Header()` call.
  This is the First time the `http.ResponseWriter` interface
  method `Header() Header` is called.
 
- 3. Page is written using the `http.ResponseWriter` interface method
+3. Page is written using the `http.ResponseWriter` interface method
  `Write([]byte) (int, error)`. We are going to disable this in case
  of the `404` request if so in the *step 4* below. Since we would
  be handing over control to the `intercept404Writer.notFoundHandler`.
 
- 4. Final Status code is updated.
+4. Final Status code is updated.
  This is done using `http.ResponseWriter` interface method
  `WriteHeader(statusCode int)`. At this time all the Headers need be
  populated for the particular request.
@@ -192,12 +192,12 @@ Let us understand the process in which the *Headers* are assembled and
  The assembly of headers would take place in this.
  Since we don't have control on the other next / prior *Middleware* used,
  we would copy all the things stored *virtual Header storage* to
- the Real header inside `intercept404Writer.writer`. <br>
+ the Real header inside `intercept404Writer.writer`.
  Then, we would also redirect the processing
  to `intercept404Writer.notFoundHandler`. And we would also disable
  the `intercept404Writer.writer` in case of `404` due to same.
 
- 5. Finally when the Response is ready to sent on *Wire* the final call to
+5. Finally when the Response is ready to sent on *Wire* the final call to
  `Header() Header` is made. This time we return the real header inside
  `intercept404Writer.writer` instead of the *virtual Header storage*.
 

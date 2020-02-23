@@ -7,7 +7,7 @@ In this we would be implementing a **UUID Generator** Micro-service.
 
 This example has also been upgraded to **Go 1.12 Appengine** requirements.
 
-## TLDR;
+## tl;dr
 
 To run this example use the command:
 
